@@ -11,7 +11,6 @@ import './App.css'
 //import Components
 
 
-//import logo from 'pages/MIL_logo_sml.jpg'
 
 //console.log(logo); 
 
