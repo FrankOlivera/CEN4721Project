@@ -6,13 +6,12 @@ import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts';
 
 //Styling
-import './App.css'
 
 //import Components
+import CalendarView from './components/CalendarView/CalendarView';
+import Header from './components/Header/Header';
 
 
-
-//console.log(logo); 
 
 const App = () => {
 
@@ -32,6 +31,8 @@ const App = () => {
 
     return (
         <div>
+            <Header/>
+            <CalendarView />
         </div>
     );
 };
