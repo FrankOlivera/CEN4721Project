@@ -12,6 +12,7 @@ export default makeStyles(() => ({
         padding: '10px',
     },
     textfield: {
+        color: 'white'
     },
     icons: {
         color: 'white',
