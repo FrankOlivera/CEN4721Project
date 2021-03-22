@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {  } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
-import { getPosts } from './actions/posts';
+import { getEvents } from './actions/events';
 
 //Styling
 
@@ -24,15 +24,15 @@ const App = () => {
 
     //https://reactjs.org/docs/hooks-reference.html#useeffect
     useEffect(() => {
-        dispatch(getPosts());
+        dispatch(getEvents());
     }, [dispatch]);
 
 
 
     return (
         <div>
-            <Header/>
-            <CalendarView />
+            <Header />
+            <CalendarView/>
         </div>
     );
 };
