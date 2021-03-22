@@ -9,7 +9,10 @@ import axios from 'axios';
 
 //Initilizes type of Requst(get,put,post,delete,etc.)
 
-const url = 'http://localhost:5000/posts';
+const eventUrl = 'http://localhost:5000/events';
 
-export const fetchPosts = () => axios.get(url);
-export const createPost = (newPost) => axios.post(url,newPost);
+export const fetchEvents = () => axios.post(eventUrl + "/get");
+export const createEvent = (newEvent) => axios.post(eventUrl, newEvent);
+export const updateEvent = (id, updatedEvent) => axios.patch(`${eventUrl}/${id}`, updatedEvent);
+export const deleteEvent = (id) => axios.delete(`${eventUrl}/${id}`);
+
