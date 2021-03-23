@@ -15,4 +15,8 @@ export default makeStyles(() => ({
     addEventButton: {
         margin: 10,
     },
+    ty: {
+        fontSize: 50,
+        margin: 10,
+    },
 }));

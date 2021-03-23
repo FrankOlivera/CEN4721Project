@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 
 
 
+
 const App = () => {
 
     //https://reactjs.org/docs/hooks-reference.html#usestateuse
@@ -25,7 +26,7 @@ const App = () => {
     return (
         <div>
             <Header />
-            <CalendarView/>
+            <CalendarView />
         </div>
     );
 };

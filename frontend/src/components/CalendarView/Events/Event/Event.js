@@ -12,7 +12,6 @@ const Event = ({ event, setCurrentId, currentId, setOpenSubmit }) => {
     const classes = useStyles();
 
     return (
-        <Grid item sm={ 5 }>
             <Card className={ classes.card }>
                 <Typography className={classes.title} variant="h6"><b>{event.title}</b></Typography>
                 <Typography className={classes.time} variant="h6">{event.startTime}{" - "}{event.endTime}</Typography>
@@ -20,7 +19,6 @@ const Event = ({ event, setCurrentId, currentId, setOpenSubmit }) => {
                 <Button variant="contained" className={classes.selectButton} color="primary" size="small" startIcon={<UpdateRounded />} onClick={() => { setCurrentId(event._id); setOpenSubmit(true); }}>Select</Button>
                 <Button variant="contained" color="secondary" className={classes.deleteButton} size="small" startIcon={<Delete />} onClick={() => { if (currentId === event._id) { alert("Please Finish Updating before Deleting") } else { dispatch(deleteEvent(event._id)) } }}>Delete</Button>
             </Card>
-        </Grid>
     );
 };
 
