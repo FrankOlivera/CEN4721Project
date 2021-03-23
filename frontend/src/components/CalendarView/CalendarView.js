@@ -1,8 +1,9 @@
 //importing from main npm's
 import React, { useState, useEffect } from 'react';
-import { Button, Grid, Dialog, DialogTitle } from '@material-ui/core';
+import { Button, Grid, Dialog, DialogTitle, Paper, Typography } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import BacklogItem from '../VoiceRecorder/BacklogItem'
 
 //importing specific npm's and components
 import Calendar from 'react-calendar';
@@ -28,6 +29,12 @@ const CalendarView = () => {
         dispatch(getEvents());
         console.log("tet");
     }, [currentId, dispatch]);
+
+    const backlogs = useSelector((state) => {
+        let backlogs = [];
+        state.events.map((backlog) => { if (backlog.title === "BACKLOG") { backlogs.push(backlog) } });
+        return backlogs;
+    });
 
     const handleClose = () =>{
         setOpenSubmit(false);  
@@ -72,7 +79,7 @@ const CalendarView = () => {
     return (
         <>
             <Grid container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={6} alignItems="center">
                     <Calendar onChange={setDate} value={date} />
                     <Button className={ classes.addEventButton } variant="outlined" color="primary" onClick={handleClickOpen}>
                         <AddCircle />add event
@@ -81,12 +88,16 @@ const CalendarView = () => {
                         <DialogTitle className={classes.dialogtitle} id="simple-dialog-title">{currentId ? "Updating An Event" : 'Add Event'}</DialogTitle>
                         <SubmitForm numberToMonth={numberToMonth} currentId={currentId} setCurrentId={setCurrentId} handleClose={handleClose} date={date} />
                     </Dialog>
+                    <Events numberToMonth={numberToMonth} setCurrentId={setCurrentId} currentId={currentId} date={date} setOpenSubmit={setOpenSubmit} />
                 </Grid>
-                <Grid item>
+                <Grid item xs={6}>
+                    <Typography className={ classes.ty } > Backlog</Typography>
+                    {backlogs.map((backlog) => (
+                        <BacklogItem event={backlog} />
+                    ))}
                 </Grid>
             </Grid>
-            <Events numberToMonth={numberToMonth} setCurrentId={setCurrentId} currentId={currentId} date={date} setOpenSubmit={setOpenSubmit} />
-            <Events numberToMonth={numberToMonth} setCurrentId={setCurrentId} currentId={currentId} date={date} setOpenSubmit={setOpenSubmit} />
+            
         </>
     );
 };
