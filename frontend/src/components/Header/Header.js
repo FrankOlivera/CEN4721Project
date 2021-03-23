@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { Paper, Grid, Button, TextField } from '@material-ui/core';
 import { SearchOutlined, Mic, HelpOutline, Settings } from '@material-ui/icons';
-import { useDispatch, useSelector } from 'react-redux';
 
 import useStyles from './styles';
 

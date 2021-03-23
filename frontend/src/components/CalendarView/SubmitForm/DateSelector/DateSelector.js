@@ -1,101 +1,78 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, Button, MenuItem } from '@material-ui/core';
 
 const monthes = [
     'Janurary',
-    '12:15am',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];//FINISH/FIX
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'Decemeber'
+];
 
 const dates = [
-    "00",
-    "01"
-];//FINISH
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+    30, 31
+];
 
 const years = [
     "2020",
     "2021",
     "2022",
     "2023"
-]; //don't have to add more
+];
 
-function DateSelector(props) {
+const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
     const [monthAnchor, setMonthAnchor] = useState(null);
     const [dateAnchor, setDayAnchor] = useState(null);
     const [yearAnchor, setYearAnchor] = useState(null);
-    const [m, setMonth] = useState("Month");
-    const [d, setDay] = useState("Day");
-    const [y, setYear] = useState("Year");
+    const [m, setMonth] = useState(numberToMonth(date.getMonth()));
+    const [d, setDay] = useState(date.getDate().toString());
+    const [y, setYear] = useState(date.getFullYear().toString());
 
-    function clear() {
-        m = "Month";
-        d = "Day";
-        y = "Year";
-    }
+    useEffect(() => {
+        setMonth(numberToMonth(date.getMonth()));
+        setDay(date.getDate().toString());
+        setYear(date.getFullYear().toString());
+    }, [date]);
 
-    function setDate(month,day,year) {
-        if (month === "Janurary") {
-            month = "1";
-        }//FINSHED
-        props.callBack(month, day, year);
-    }
-
-    function setDateMonth(e) {
-        setDate(e,d,y);
-    }
-    function setDateDay(e) {
-        setDate(m, e, y);
-    }
-    function setDateYear(e) {
-        setDate(m, d, e);
+    function setDate(month, day, year) {
+        const newDate = month.toString() + day.toString() + year.toString();
+        setEventData({ ...eventData, date: newDate });
     }
 
     //////////
-    const handleMClick = (event) => {
-        setMonthAnchor(event.currentTarget);
+    const handleDClick = (event) => { setDayAnchor(event.currentTarget); };
+    const handleMClick = (event) => { setMonthAnchor(event.currentTarget); };
+    const handleYClick = (event) => { setYearAnchor(event.currentTarget); };
+    
+    const handleDClose = () => { setDayAnchor(null); };
+    const handleMClose = () => { setMonthAnchor(null); };
+    const handleYClose = () => { setYearAnchor(null); };
+    ////////////////
+
+    const handleDayClick = (event) => {
+        setDay(event.target.textContent);
+        handleDClose();
+        setDate(m, event.target.textContent, y);
     };
     const handleMonthClick = (event) => {
         setMonth(event.target.textContent);
         handleMClose();
-        setDateMonth(event.target.textContent);
-    };
-    const handleMClose = () => {
-        setMonthAnchor(null);
-    };
-    ////////////////
-    const handleDClick = (event) => {
-        setDayAnchor(event.currentTarget);
-    };
-    const handleDayClick = (event) => {
-        setDay(event.target.textContent);
-        handleDClose();
-        setDateDay(event.target.textContent);
-    };
-    const handleDClose = () => {
-        setDayAnchor(null);
-    };
-    //////////////////
-    const handleYClick = (event) => {
-        setYearAnchor(event.currentTarget);
+        setDate(event.target.textContent, d, y);
     };
     const handleYearClick = (event) => {
         setYear(event.target.textContent);
         handleYClose();
-        setDateYear(event.target.textContent);
-    };
-    const handleYClose = () => {
-        setYearAnchor(null);
+        setDate(m, d, event.target.textContent);
     };
 
     return (
@@ -114,7 +91,7 @@ function DateSelector(props) {
                 ))}
 
             </Menu>
-            <Button children={d} aria-controls="simple-menu" aria-haspopup="true" onClick={handleDClick} />
+            <Button children={d.toString()} aria-controls="simple-menu" aria-haspopup="true" onClick={handleDClick} />
             <Menu
                 id="simple-menu"
                 anchorEl={dateAnchor}

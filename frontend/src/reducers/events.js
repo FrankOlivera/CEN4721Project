@@ -3,7 +3,6 @@ import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT, FETCH_DATE_EVENTS } from '../
 export default (events = [], action) => {
     switch (action.type) {
         case FETCH_DATE_EVENTS:
-            console.log(action.payload);
             return action.payload;
         case CREATE_EVENT:
             return [...events, action.payload];

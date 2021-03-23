@@ -17,18 +17,11 @@ import './Calendar.css'
 
 const CalendarView = () => {
     const [currentId, setCurrentId] = useState(0);
-    const [value, onChange] = useState(new Date());
+    const [date, setDate] = useState(new Date());
+    const [addEvent, setAddEvent] = useState(false);
     const dispatch = useDispatch();
 
     const classes = useStyles();
-
-    const h = async () => {
-        console.log(test);
-        console.log(value.getMonth().toString() + value.getDate().toString() + value.getFullYear().toString());
-        console.log(dispatch(getEvents()));
-        console.log(test);
-        console.log("test");
-    }
 
     useEffect(() => {
         dispatch(getEvents());
@@ -36,26 +29,22 @@ const CalendarView = () => {
 
     return (
         <div>
-            <Button onClick={ h }>CLICK </Button>
-            <SubmitForm currentId={currentId} setCurrentId={setCurrentId} />
-            <Events setCurrentId={setCurrentId } />
-
-            <Button className={classes.root}>Hook</Button>
-            <Grid container direction="row" justify="flex-start" alignItems="flex-start" spacing={1}>
-                    <Calendar onChange={onChange} value={value} />
-            </Grid>
-            <form>
-                <Grid container direction="row" justify="flex-start" alignItems="flex-start" spacing={1}>
-                    <Grid container direction="row" justify="flex-start" alignItems="flex-start" spacing={1}>
-                        <Grid item sm={10}>
-                            <Calendar onChange={onChange} value={value} />
+            <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
+                <Grid item>
+                    <Grid container direction="column" justify="center" alignItems="center" spacing={2}>
+                        <Grid item>
+                            <SubmitForm currentId={currentId} setCurrentId={setCurrentId} date={ date }/>
                         </Grid>
-                        <Grid item sm={6}>
+                        <Grid item>
+                            <Calendar onChange={setDate} value={date} />
+                            <Events setCurrentId={setCurrentId} date={ date } />
                         </Grid>
                     </Grid>
-                    <Button type="submit" > Submit </Button>
                 </Grid>
-            </form>
+                <Grid item>
+                    <Button>HIHIHIHIHIH</Button>
+                </Grid>
+            </Grid>
         </div>
     );
 };
