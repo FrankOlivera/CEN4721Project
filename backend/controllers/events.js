@@ -9,9 +9,7 @@ const router = express.Router();
 //THIS FILE DEFINES REQUESTS
 export const getEvents = async (req, res) => {
     try {
-        const { date } = req.body;
         const events = await EventMessage.find();
-        events.map((event) => (console.log(event.date)));
 
         res.status(200).json(events);
     } catch (error) {

@@ -3,11 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
     paper: {
-        width: '250px',
+        width: '300px',
         padding: '5px',
     },
     grid: {
-        width: '250px',
         padding: '5px'
     },
     title: {
