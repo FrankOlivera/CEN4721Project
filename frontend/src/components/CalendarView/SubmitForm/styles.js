@@ -2,11 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 export default makeStyles(() => ({
-    paper: {
-        width: '300px',
-        padding: '5px',
-    },
     grid: {
+        width: '500px',
         padding: '5px'
     },
     title: {
@@ -14,6 +11,7 @@ export default makeStyles(() => ({
         padding: '5px'
     },
     description: {
+        width: '400px',
         margin: '5px',
         padding: '5px'
     },

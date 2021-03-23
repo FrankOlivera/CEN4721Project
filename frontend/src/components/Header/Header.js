@@ -13,7 +13,7 @@ const Header = () => {
                     <Grid item xs={5}>
                         <Button className={classes.buttons}><SearchOutlined className={classes.icons} />
                         </Button>
-                        <TextField color="secondary" InputProps={{ className: classes.textfield }} InputLabelProps={{ className: classes.textfield }} label="Search" variant="outlined" >
+                        <TextField color="primary" InputProps={{ className: classes.textfield }} InputLabelProps={{ className: classes.textfieldLabel }} label="Search" variant="outlined" >
                         </TextField>
                     </Grid>
                     <Button className={classes.buttons}> <Mic className={classes.icons} /> </Button>

@@ -12,12 +12,19 @@ export default makeStyles(() => ({
         padding: '10px',
     },
     textfield: {
-        color: 'white'
+        background: 'white',
+        color: '#000000'
+    },
+    textfieldLabel: {
+        fontSize: 20,
+        background: 'white',
+        color: '#0021A5'
     },
     icons: {
         color: 'white',
     },
     buttons: {
+        width: "20",
         background: '#FA4616',
         margin: '10px',
     },

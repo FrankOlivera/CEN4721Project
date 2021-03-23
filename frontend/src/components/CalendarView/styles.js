@@ -9,4 +9,10 @@ export default makeStyles(() => ({
         color: 'white',
         padding: '0 50px',
     },
+    dialogtitle: {
+        textAlign: "center",
+    },
+    addEventButton: {
+        margin: 10,
+    },
 }));

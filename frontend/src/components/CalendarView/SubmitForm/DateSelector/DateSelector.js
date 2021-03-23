@@ -23,6 +23,19 @@ const dates = [
     30, 31
 ];
 
+const dates2 = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+    30
+];
+
+const dates3 = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27, 28
+];
+
 const years = [
     "2020",
     "2021",
@@ -37,11 +50,13 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
     const [m, setMonth] = useState(numberToMonth(date.getMonth()));
     const [d, setDay] = useState(date.getDate().toString());
     const [y, setYear] = useState(date.getFullYear().toString());
+    const [daysToUse, setDaysToUse] = useState(dates);
 
     useEffect(() => {
         setMonth(numberToMonth(date.getMonth()));
         setDay(date.getDate().toString());
         setYear(date.getFullYear().toString());
+        monthChangeDays();
     }, [date]);
 
     function setDate(month, day, year) {
@@ -68,12 +83,28 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
         setMonth(event.target.textContent);
         handleMClose();
         setDate(event.target.textContent, d, y);
+        monthChangeDays();
+        
     };
     const handleYearClick = (event) => {
         setYear(event.target.textContent);
         handleYClose();
         setDate(m, d, event.target.textContent);
     };
+
+    const monthChangeDays = () =>{
+        if (m === "Janurary" || m === "March" || m === "May" || m === "July" || m === "August" || m === "October" || m === "December") {
+            setDaysToUse(dates);
+        }
+        else if (m === "February") {
+             if (d === "29" || d === "30" || d === "31") {
+                 setDay("28");
+             }
+
+            setDaysToUse(dates3);
+        }
+        else { if (d === "31") { setDay("30"); } setDaysToUse(dates2); }
+    }
 
     return (
         <>
@@ -87,7 +118,7 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
                 PaperProps={{ style: { maxHeight: 200 } }}
             >
                 {monthes.map((month) => (
-                    <MenuItem key={month.toString()} children={month} onClick={handleMonthClick} />
+                    <MenuItem selected={ month.toString() === m } key={month.toString()} children={month} onClick={handleMonthClick} />
                 ))}
 
             </Menu>
@@ -100,9 +131,10 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
                 onClose={handleDClose}
                 PaperProps={{ style: { maxHeight: 200 } }}
             >
-                {dates.map((date) => (
-                    <MenuItem key={date.toString()} children={date} onClick={handleDayClick} />
-                ))}
+                {
+                    daysToUse.map((date) => (
+                        <MenuItem selected={date.toString() === d} key={date.toString()} children={date} onClick={handleDayClick} />
+                    ))}
 
             </Menu>
             <Button children={y} aria-controls="simple-menu" aria-haspopup="true" onClick={handleYClick} />
@@ -115,7 +147,7 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
                 PaperProps={{ style: { maxHeight: 200 } }}
             >
                 {years.map((year) => (
-                    <MenuItem key={ year.toString() } children={year} onClick={handleYearClick} />
+                    <MenuItem selected={ year.toString() === y } key={ year.toString() } children={year} onClick={handleYearClick} />
                 ))}
 
             </Menu>
