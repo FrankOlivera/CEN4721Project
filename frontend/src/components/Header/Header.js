@@ -22,7 +22,7 @@ const Header = () => {
                     <Grid item xs={5}>
                         <Button className={classes.buttons}><SearchOutlined className={classes.icons} />
                         </Button>
-                        <TextField color="primary" InputProps={{ className: classes.textfield }} InputLabelProps={{ className: classes.textfield }} label="Search" variant="outlined" >
+                        <TextField color="secondary" InputProps={{ className: classes.textfield }} InputLabelProps={{ className: classes.textfield }} label="Search" variant="outlined" >
                         </TextField>
                     </Grid>
                     <Button className={classes.buttons} onClick={handleClickOpen}> <Mic className={classes.icons} /> </Button>
@@ -30,7 +30,7 @@ const Header = () => {
                     <Button className={classes.buttons} > <Settings className={classes.icons} /> </Button>
                 </Grid>
             </Paper>
-            <VoiceRecorder open={open} onClose={handleClose} />
+            <VoiceRecorder open={open} onClose={handleClose}/>
         </div>
     );
 };

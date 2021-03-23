@@ -29,6 +29,9 @@ const SubmitForm = ({ currentId, setCurrentId, date, handleClose, numberToMonth 
     useEffect(() => {
         if (event) {
             setEventData(event);
+            if (eventData.startTime === "") {
+                setEventData({ ...eventData, startTime: "8:00am",endTime: "9:00am"});
+            }
         }
     }, [event]);
 
@@ -46,9 +49,9 @@ const SubmitForm = ({ currentId, setCurrentId, date, handleClose, numberToMonth 
 
     const handleSubmit = async () => {
         console.log("done");
-        if (document.getElementById("SubmitFormTitle").value === '') {
+        if (document.getElementById("SubmitFormTitle").value === '' || document.getElementById("SubmitFormTitle").value === 'BACKLOG') {
             setTitleError(true);
-            alert("Please Add a Title");
+            alert("Please Add a Title or change from BACKLOG");
         }
         else if (timeToNumber(eventData.startTime) > timeToNumber(eventData.endTime)) {
             setTitleError(false);

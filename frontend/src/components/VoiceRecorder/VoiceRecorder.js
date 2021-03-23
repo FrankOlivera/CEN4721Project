@@ -16,9 +16,6 @@ const VoiceRecorder = (props) => {
     const { transcript, resetTranscript } = useSpeechRecognition()
     const dispatch = useDispatch();
     const [eventData, setEventData] = useState({ title: 'BACKLOG', date: '', description: '', startTime: '', endTime: '' });
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        return null
-    }
 
     const handleClose = () => {
         SpeechRecognition.stopListening();
