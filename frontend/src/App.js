@@ -4,6 +4,7 @@
 import CalendarView from './components/CalendarView/CalendarView';
 import Header from './components/Header/Header';
 
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -20,13 +21,13 @@ const App = () => {
     /*useEffect(() => {
         dispatch(getEvents());
     }, [dispatch]);*/
-
+    
 
 
     return (
         <div>
-            <Header />
-            <CalendarView />
+            <Header/>
+            <CalendarView/>
         </div>
     );
 };

@@ -19,15 +19,14 @@ import './Calendar.css'
 
 const CalendarView = () => {
     const [currentId, setCurrentId] = useState(0);
-    const [date, setDate] = useState(new Date());
     const [openSubmit, setOpenSubmit] = useState(false);
+    const [date, setDate] = useState(new Date());
     const dispatch = useDispatch();
 
     const classes = useStyles();
 
     useEffect(() => {
         dispatch(getEvents());
-        console.log("tet");
     }, [currentId, dispatch]);
 
     const backlogs = useSelector((state) => {
@@ -93,7 +92,7 @@ const CalendarView = () => {
                 <Grid item xs={6}>
                     <Typography className={ classes.ty } > Backlog</Typography>
                     {backlogs.map((backlog) => (
-                        <BacklogItem event={backlog} />
+                        <BacklogItem event={backlog} currentId={currentId} setCurrentId={setCurrentId} setOpenSubmit={setOpenSubmit}/>
                     ))}
                 </Grid>
             </Grid>
