@@ -12,6 +12,6 @@ username and password should be changed including <> removed
 
 .env Example: 
 PORT=5000
-DATABASE=mongodb+srv://<username>:<password>@cluster0.dfy0m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+DATABASE=mongodb+srv://username:password@cluster0.dfy0m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 
