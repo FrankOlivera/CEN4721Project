@@ -1,7 +1,7 @@
 # CEN4721Project
 
 Uses dotenv(.env) file in the backend to store two variables
-a port named PORT, default is 5000
+a port named PORT, default is 5000 and
 a database named DATABASE, database is a mongodb atlas server
 
 
