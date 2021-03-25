@@ -6,7 +6,7 @@ a database named DATABASE, database is a mongodb atlas server
 
 
 
-<username> and <password> should be changed including <> removed
+username and password should be changed including <> removed
 
 
 
