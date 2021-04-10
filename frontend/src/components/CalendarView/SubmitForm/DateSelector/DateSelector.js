@@ -36,6 +36,12 @@ const dates3 = [
     20, 21, 22, 23, 24, 25, 26, 27, 28
 ];
 
+const dates4 = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27, 28, 29
+];
+
 const years = [
     "2020",
     "2021",
@@ -56,7 +62,7 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
         setMonth(numberToMonth(date.getMonth()));
         setDay(date.getDate().toString());
         setYear(date.getFullYear().toString());
-        monthChangeDays();
+        monthChangeDays(numberToMonth(date.getMonth()));
     }, [date]);
 
     function setDate(month, day, year) {
@@ -83,7 +89,7 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
         setMonth(event.target.textContent);
         handleMClose();
         setDate(event.target.textContent, d, y);
-        monthChangeDays();
+        monthChangeDays(event.target.textContent);
         
     };
     const handleYearClick = (event) => {
@@ -92,16 +98,24 @@ const DateSelector = ({ date, setEventData, eventData, numberToMonth  }) =>{
         setDate(m, d, event.target.textContent);
     };
 
-    const monthChangeDays = () =>{
-        if (m === "Janurary" || m === "March" || m === "May" || m === "July" || m === "August" || m === "October" || m === "December") {
+    const monthChangeDays = (e) =>{
+        if (e === "Janurary" || e === "March" || e === "May" || e === "July" || e === "August" || e === "October" || e === "December") {
             setDaysToUse(dates);
         }
-        else if (m === "February") {
-             if (d === "29" || d === "30" || d === "31") {
-                 setDay("28");
-             }
+        else if (e === "February") {
+            if (y % 4 === 0) {
+                if (d === "30" || d === "31") {
+                    setDay("29");
+                }
+                setDaysToUse(dates4);
+            }
+            else {
+                if (d === "29" || d === "30" || d === "31") {
+                    setDay("28");
+                }
 
-            setDaysToUse(dates3);
+                setDaysToUse(dates3);
+            }
         }
         else { if (d === "31") { setDay("30"); } setDaysToUse(dates2); }
     }
