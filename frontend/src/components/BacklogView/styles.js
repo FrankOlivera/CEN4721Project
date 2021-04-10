@@ -12,14 +12,15 @@ export default makeStyles(() => ({
     dialogtitle: {
         textAlign: "center",
     },
-    calendar: {
-        margin: 20,
-    },
     addEventButton: {
         margin: 10,
     },
     ty: {
         fontSize: 50,
+        margin: 10,
+    },
+    ty2: {
+        fontSize: 30,
         margin: 10,
     },
 }));

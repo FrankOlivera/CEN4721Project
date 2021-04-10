@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, Typography,Button,Grid } from '@material-ui/core/';
+import { Card, Typography,Button } from '@material-ui/core/';
 import { useDispatch } from 'react-redux';
 import { deleteEvent } from '../../../../actions/events'
-import { FormatBold } from '@material-ui/icons';
 import { Delete, UpdateRounded } from '@material-ui/icons';
 import useStyles from './styles.js';
 
